@@ -8,7 +8,7 @@ public class Problem {
 	}
 
 	static long sum = 0;
-	static int mod = 1000000007;
+	static final int mod = 1000000007;
 
 	static void run() {
 		long a = 0;

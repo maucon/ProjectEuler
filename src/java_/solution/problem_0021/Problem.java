@@ -2,7 +2,7 @@ package java_.solution.problem_0021;
 
 public class Problem {
 
-	private static int[] SAVE = new int[10001];
+	private static final int[] SAVE = new int[10001];
 
 	public static int solve() {
 

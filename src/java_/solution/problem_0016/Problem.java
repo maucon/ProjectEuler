@@ -4,12 +4,9 @@ import java.util.ArrayList;
 
 public class Problem {
 
-	public static final String DESCRIPTION = "2^15 = 32768 and the sum of its digits is 3 + 2 + 7 + 6 + 8 = 26.\r\n"
-			+ "\t  What is the sum of the digits of the number 2^1000?";
-
 	public static int solve() {
 
-		ArrayList<Integer> number = new ArrayList<Integer>();
+		ArrayList<Integer> number = new ArrayList<>();
 		number.add(1);
 
 		for (int i = 0; i < 40; i++) {
@@ -33,8 +30,7 @@ public class Problem {
 
 		int solution = 0;
 
-		for (int i = 0; i < number.size(); i++)
-			solution += number.get(i);
+		for (Integer integer : number) solution += integer;
 
 		return solution;
 	}

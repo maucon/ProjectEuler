@@ -3,15 +3,13 @@ package java_;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 
 public class Main {
 
     public Main() {
 
         // ----------------------------------------------
-        int problemNumber = 1;
+        int problemNumber = 36;
         // ----------------------------------------------
 
         try {
@@ -39,7 +37,7 @@ public class Main {
 
         } catch (Exception e) {
             System.err.println("Problem not solved yet!");
-            // e.printStackTrace();
+             e.printStackTrace();
         }
     }
 

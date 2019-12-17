@@ -6,16 +6,13 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Objects;
 
 public class Problem {
 
-	public static final String DESCRIPTION = "Using names.txt (right click and 'Save Link/Target As...'), a 46K text file containing over five-thousand first names, begin by sorting it into alphabetical order.\r\n\t  Then working out the alphabetical value for each name, multiply this value by its alphabetical position in the list to obtain a name score.\r\n"
-			+ "\t  For example, when the list is sorted into alphabetical order, COLIN, which is worth 3 + 15 + 12 + 9 + 14 = 53, is the 938th name in the list. So, COLIN would obtain a score of 938 � 53 = 49714.\r\n"
-			+ "\r\n\t  What is the total of all the name scores in the file?";
-
 	public static int solve() {
 
-		ArrayList<String> names = sort(readNames());
+		ArrayList<String> names = sort(Objects.requireNonNull(readNames()));
 
 		int sum = 0;
 
@@ -30,15 +27,13 @@ public class Problem {
 		if (pNames.size() == 1)
 			return pNames;
 
-		ArrayList<String> list1 = new ArrayList<String>();
-		list1.addAll(pNames.subList(0, pNames.size() / 2));
+		ArrayList<String> list1 = new ArrayList<>(pNames.subList(0, pNames.size() / 2));
 		list1 = sort(list1);
 
-		ArrayList<String> list2 = new ArrayList<String>();
-		list2.addAll(pNames.subList(pNames.size() / 2, pNames.size()));
+		ArrayList<String> list2 = new ArrayList<>(pNames.subList(pNames.size() / 2, pNames.size()));
 		list2 = sort(list2);
 
-		ArrayList<String> sorted = new ArrayList<String>();
+		ArrayList<String> sorted = new ArrayList<>();
 		while (list1.size() > 0 && list2.size() > 0) {
 
 			if (list1.get(0).compareTo(list2.get(0)) < 0) {
@@ -63,7 +58,7 @@ public class Problem {
 		int worth = 0;
 
 		for (int i = 0; i < pName.length(); i++)
-			worth += Integer.valueOf(pName.charAt(i)) - 64;
+			worth += (int) pName.charAt(i) - 64;
 
 		return worth;
 	}
@@ -76,7 +71,7 @@ public class Problem {
 
 			String s = br.readLine();
 			br.close();
-			return new ArrayList<String>(Arrays.asList(s.replaceAll("\"", "").split(",")));
+			return new ArrayList<>(Arrays.asList(s.replaceAll("\"", "").split(",")));
 
 		} catch (IOException e) {
 			e.printStackTrace();

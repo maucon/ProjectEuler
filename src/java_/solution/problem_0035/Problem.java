@@ -2,10 +2,6 @@ package java_.solution.problem_0035;
 
 public class Problem {
 
-	public static final String DESCRIPTION = "The number, 197, is called a circular prime because all rotations of the digits: 197, 971, and 719, are themselves prime.\r\n"
-			+ "\t  There are thirteen such primes below 100: 2, 3, 5, 7, 11, 13, 17, 31, 37, 71, 73, 79, and 97.\r\n"
-			+ "\t  How many circular primes are there below one million?";
-
 	private static final boolean[] SIEVE = new boolean[1000000];
 
 	public static int solve() {
@@ -41,12 +37,12 @@ public class Problem {
 		int length = chars.length;
 
 		for (int i = 1; i < length; i++) {
-			String s = "";
+			StringBuilder s = new StringBuilder();
 
 			for (int j = 0; j < length; j++)
-				s += chars[(j + i) % length];
+				s.append(chars[(j + i) % length]);
 
-			if (SIEVE[Integer.valueOf(s)])
+			if (SIEVE[Integer.parseInt(s.toString())])
 				return false;
 		}
 
