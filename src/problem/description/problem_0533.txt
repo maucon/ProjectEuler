@@ -1,0 +1,5 @@
+The Carmichael function (n) is defined as the smallest positive integer m such that am = 1 modulo n for all integers a coprime with n.
+For example (8) = 2 and (240) = 4.
+Define L(n) as the smallest positive integer m such that (k)n for all km.
+For example, L(6)=241 and L(100)=20174525281.
+Find L(20000000). Give the last 9 digits of your answer.

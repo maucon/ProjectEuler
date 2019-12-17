@@ -1,0 +1,15 @@
+
+Consider the natural numbers having at least 5 prime factors, which don't have to be distinct. Sorting these numbers by size gives a list which starts with:
+
+32=22222
+48=22223
+64=222222
+72=22233
+80=22225
+96=222223
+  ...
+
+So, for example, the fifth number with at least 5 prime factors is 80.
+
+
+Find the millionth number with at least one million prime factors.  Give your answer modulo 123454321.

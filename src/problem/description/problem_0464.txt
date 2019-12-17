@@ -1,0 +1,19 @@
+
+The Mbius function, denoted (n), is defined as:
+(n) = (-1)(n) if n is squarefree (where (n) is the number of distinct prime factors of n)
+(n) = 0 if n is not squarefree.
+
+Let P(a,b) be the number of integers n in the interval [a,b] such that (n) = 1.
+Let N(a,b) be the number of integers n in the interval [a,b] such that (n) = -1.
+For example, P(2,10) = 2 and N(2,10) = 4.
+
+
+Let C(n) be the number of integer pairs (a,b) such that:
+ 1abn,
+ 99N(a,b)100P(a,b), and
+ 99P(a,b)100N(a,b).
+
+For example, C(10)=13, C(500)=16676 and C(10000)=20155319.
+
+
+Find C(20000000).
