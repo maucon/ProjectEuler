@@ -2,12 +2,6 @@ package java_.solution.problem_0684;
 
 public class Problem {
 
-	public static final String DESCRIPTION = "Define s(n) to be the smallest number that has a digit sum of n. For example s(10)=19.\r\n" + 
-			"Let S(k)=∑n=1ks(n). You are given S(20)=1074.\r\n\r\n" + 
-			"Further let fi be the Fibonacci sequence defined by f0=0,f1=1 and fi=fi−2+fi−1 for all i≥2.\r\n\r\n" + 
-			"Find ∑i=290S(fi).\r\n" + 
-			"Give your answer modulo 1000000007.";
-
 	public static long solve() {
 		run();
 		return sum;

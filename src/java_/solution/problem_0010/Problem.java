@@ -4,14 +4,11 @@ import java.util.ArrayList;
 
 public class Problem {
 
-	public static final String DESCRIPTION = "The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.\r\n"
-			+ "\t  Find the sum of all the primes below two million.";
-
 	public static long solve() {
 
 		long solution = 2;
 
-		ArrayList<Integer> primes = new ArrayList<Integer>();
+		ArrayList<Integer> primes = new ArrayList<>();
 		primes.add(2);
 		int count = 1;
 
@@ -19,12 +16,12 @@ public class Problem {
 			count += 2;
 
 			boolean prime = true;
-			for (int i = 0; i < primes.size(); i++) {
+			for (Integer integer : primes) {
 
-				if (primes.get(i) > Math.sqrt(count))
+				if (integer > Math.sqrt(count))
 					break;
 
-				if (count % primes.get(i) == 0) {
+				if (count % integer == 0) {
 					prime = false;
 					break;
 				}

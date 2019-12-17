@@ -2,9 +2,6 @@ package java_.solution.problem_0005;
 
 public class Problem {
 
-	public static final String DESCRIPTION = "2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.\r\n"
-			+ "\t  What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?";
-
 	public static int solve() {
 		int solution = 1;
 

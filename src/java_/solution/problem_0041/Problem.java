@@ -2,9 +2,6 @@ package java_.solution.problem_0041;
 
 public class Problem {
 
-	public static final String DESCRIPTION = "We shall say that an n-digit number is pandigital if it makes use of all the digits 1 to n exactly once.\r\nFor example, 2143 is a 4-digit pandigital and is also prime.\r\n"
-			+ "What is the largest n-digit pandigital prime that exists?\r\n";
-
 	private static final boolean[] SIEVE = new boolean[7654322];
 
 	public static int solve() {

@@ -4,12 +4,9 @@ import java.util.ArrayList;
 
 public class Problem {
 
-	public static final String DESCRIPTION = "By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can see that the 6th prime is 13.\r\n"
-			+ "\t  What is the 10 001st prime number?";
-
 	public static int solve() {
 
-		ArrayList<Integer> primes = new ArrayList<Integer>();
+		ArrayList<Integer> primes = new ArrayList<>();
 		primes.add(2);
 		int count = 1;
 
@@ -17,12 +14,12 @@ public class Problem {
 			count += 2;
 
 			boolean prime = true;
-			for (int i = 0; i < primes.size(); i++) {
+			for (Integer integer : primes) {
 
-				if (primes.get(i) > Math.sqrt(count))
+				if (integer > Math.sqrt(count))
 					break;
 
-				if (count % primes.get(i) == 0) {
+				if (count % integer == 0) {
 					prime = false;
 					break;
 				}

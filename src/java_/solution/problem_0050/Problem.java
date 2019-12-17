@@ -2,12 +2,6 @@ package java_.solution.problem_0050;
 
 public class Problem {
 
-	public static final String DESCRIPTION = "The prime 41, can be written as the sum of six consecutive primes:\r\n"
-			+ "\t  41 = 2 + 3 + 5 + 7 + 11 + 13\r\n"
-			+ "\t  This is the longest sum of consecutive primes that adds to a prime below one-hundred.\r\n"
-			+ "\t  The longest sum of consecutive primes below one-thousand that adds to a prime, contains 21 terms, and is equal to 953.\r\n"
-			+ "\t  Which prime, below one-million, can be written as the sum of the most consecutive primes?";
-
 	public static final boolean[] SIEVE = new boolean[1000000];
 
 	public static int solve() {

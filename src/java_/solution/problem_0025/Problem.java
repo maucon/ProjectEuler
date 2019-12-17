@@ -4,19 +4,11 @@ import java.util.ArrayList;
 
 public class Problem {
 
-	public static final String DESCRIPTION = "The Fibonacci sequence is defined by the recurrence relation:\r\n"
-			+ "\t  Fn = Fn−1 + Fn−2, where F1 = 1 and F2 = 1.\r\n" + "\t  Hence the first 12 terms will be:\r\n\r\n"
-			+ "\t\t  F1 = 1\r\n" + "\t\t  F2 = 1\r\n" + "\t\t  F3 = 2\r\n" + "\t\t  F4 = 3\r\n" + "\t\t  F5 = 5\r\n"
-			+ "\t\t  F6 = 8\r\n" + "\t\t  F7 = 13\r\n" + "\t\t  F8 = 21\r\n" + "\t\t  F9 = 34\r\n"
-			+ "\t\t  F10 = 55\r\n" + "\t\t  F11 = 89\r\n" + "\t\t  F12 = 144\r\n\r\n"
-			+ "\t  The 12th term, F12, is the first term to contain three digits.\r\n"
-			+ "\t  What is the index of the first term in the Fibonacci sequence to contain 1000 digits?";
-
 	@SuppressWarnings("unchecked")
 	public static int solve() {
 
-		ArrayList<Integer> a = new ArrayList<Integer>();
-		ArrayList<Integer> b = new ArrayList<Integer>();
+		ArrayList<Integer> a = new ArrayList<>();
+		ArrayList<Integer> b = new ArrayList<>();
 		a.add(1);
 		b.add(1);
 

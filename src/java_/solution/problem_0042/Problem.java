@@ -9,25 +9,18 @@ import java.util.Arrays;
 
 public class Problem {
 
-	public static final String DESCRIPTION = "The n'th term of the sequence of triangle numbers is given by, t(n) = �n(n+1); so the first ten triangle numbers are:\r\n"
-			+ "\t  1, 3, 6, 10, 15, 21, 28, 36, 45, 55, ...\r\n"
-			+ "\t  By converting each letter in a word to a number corresponding to its alphabetical position and adding these values we form a word value. For example, the word value for SKY is 19 + 11 + 25 = 55 = t10. If the word value is a triangle number then we shall call the word a triangle word.\r\n"
-			+ "\t  Using words.txt (right click and 'Save Link/Target As...'), a 16K text file containing nearly two-thousand common English words, how many are triangle words?";
-
-	private static ArrayList<String> WORDS;
-
 	public static int solve() {
-		WORDS = readWords();
+		ArrayList<String> WORDS = readWords();
 
-		ArrayList<Integer> values = new ArrayList<Integer>();
+		ArrayList<Integer> values = new ArrayList<>();
 		int highest_value = 0;
 
-		for (int i = 0; i < WORDS.size(); i++) {
+		assert WORDS != null;
+		for (String s : WORDS) {
 			int value = 0;
-			String word = WORDS.get(i);
 
-			for (int j = 0; j < word.length(); j++)
-				value += Integer.valueOf(word.charAt(j)) - 64;
+			for (int j = 0; j < s.length(); j++)
+				value += (int) s.charAt(j) - 64;
 
 			if (value > highest_value)
 				highest_value = value;
@@ -35,7 +28,7 @@ public class Problem {
 			values.add(value);
 		}
 
-		ArrayList<Integer> triangle_numbers = new ArrayList<Integer>();
+		ArrayList<Integer> triangle_numbers = new ArrayList<>();
 		triangle_numbers.add(1);
 		int count = 2;
 
@@ -47,8 +40,8 @@ public class Problem {
 		triangle_numbers.remove(triangle_numbers.size() - 1);
 
 		int triangle_words = 0;
-		for (int i = 0; i < values.size(); i++)
-			if (triangle_numbers.contains(values.get(i)))
+		for (Integer value : values)
+			if (triangle_numbers.contains(value))
 				triangle_words++;
 
 		return triangle_words;
@@ -62,7 +55,7 @@ public class Problem {
 
 			String s = br.readLine();
 			br.close();
-			return new ArrayList<String>(Arrays.asList(s.replaceAll("\"", "").split(",")));
+			return new ArrayList<>(Arrays.asList(s.replaceAll("\"", "").split(",")));
 
 		} catch (IOException e) {
 			e.printStackTrace();

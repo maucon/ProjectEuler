@@ -5,10 +5,6 @@ import java.util.ArrayList;
 
 public class Problem {
 
-	public static final String DESCRIPTION = "Alice walks on a lattice grid. She can step from one lattice point A(a,b) to another B(a+x,b+y) providing distance\r\nAB=sqrt(x^2+y^2) is a Fibonacci number {1,2,3,5,8,13,…} and x≥0, y≥0\r\n\r\n"
-			+ "Let F(W,H) be the number of paths Alice can take from (0,0) to (W,H).\r\n"
-			+ "You are given F(3,4)=278 and F(10,10)=215846462\r\n\r\nFind F(10000,10000)mod1000000007";
-
 	public static int solve() {
 		calcFibonacci((int) Math.sqrt(size * size + size * size) + 1);
 		generateValidMoves();
@@ -27,10 +23,9 @@ public class Problem {
 			for (int y = x == 0 ? 1 : x; y <= size; y++) {
 				long count = 0;
 
-				for (int a = 0; a < validMoves.size(); a++) {
-					Point move = validMoves.get(a);
+				for (Point move : validMoves) {
 					if (move.getY() <= y && move.getX() <= x) {
-						count += field[(int) (x - validMoves.get(a).getX())][(int) (y - validMoves.get(a).getY())];
+						count += field[(int) (x - move.getX())][(int) (y - move.getY())];
 					}
 				}
 
