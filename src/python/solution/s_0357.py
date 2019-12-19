@@ -1,6 +1,6 @@
-def solve(limit=100000000):
+def solve(limit=10000000):
     s = 1  # n = 1 works
-    psieve = [True for _ in range(limit + 2)]
+    psieve = [True] * (limit + 2)
     for k in range(4, len(psieve), 2):
         psieve[k] = False
     for p in range(3, len(psieve), 2):
@@ -13,7 +13,6 @@ def solve(limit=100000000):
                         break
             else:
                 s += prime
-                print(prime)
             for i in range(p * 2, len(psieve), p):
                 psieve[i] = False
     return s
