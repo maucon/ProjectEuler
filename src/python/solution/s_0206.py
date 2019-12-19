@@ -8,4 +8,3 @@ def solve():
     for i in range(start, end, 10):
         if pattern.match(str(i ** 2)):
             return i
-    return -1

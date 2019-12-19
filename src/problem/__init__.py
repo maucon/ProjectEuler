@@ -1,6 +1,7 @@
+import os.path
+
 import requests
 from bs4 import BeautifulSoup
-import os.path
 
 if __name__ == '__main__':
     p = 1
