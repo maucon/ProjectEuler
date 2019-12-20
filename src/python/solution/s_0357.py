@@ -1,4 +1,4 @@
-def solve(limit=10000000):
+def solve(limit=100000000):
     s = 1  # n = 1 works
     psieve = [True] * (limit + 2)
     for k in range(4, len(psieve), 2):

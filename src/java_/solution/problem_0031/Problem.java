@@ -5,7 +5,6 @@ public class Problem {
 	private static final int[] COINS = { 200, 100, 50, 20, 10, 5, 2, 1 };
 
 	public static int solve() {
-
 		return possibilities(200, 0);
 	}
 
