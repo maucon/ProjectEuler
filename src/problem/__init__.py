@@ -4,7 +4,7 @@ import requests
 from bs4 import BeautifulSoup
 
 if __name__ == '__main__':
-    p = 1
+    p = 680
     while True:
         try:
             soup = BeautifulSoup(requests.get('https://projecteuler.net/problem=%u' % p).content, 'html.parser')
