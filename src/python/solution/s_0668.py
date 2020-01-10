@@ -1,4 +1,3 @@
-# How many square root smooth numbers are there not exceeding 10000000000?
 def solve(limit=10000000000):
     psieve, primes = [True for _ in range(int(limit ** 0.5) + 1)], [2]
     for p in range(3, len(psieve), 2):
