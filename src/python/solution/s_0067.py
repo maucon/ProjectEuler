@@ -1,5 +1,8 @@
+import os
+
+
 def solve():
-    with open('res/p_0067.txt', 'r') as f:
+    with open(os.path.dirname(os.path.abspath(__file__)) + '/res/p_0067.txt', 'r') as f:
         lines = []
         for line in f.read().split('\n'):
             lines.append([int(x) for x in line.split(' ')])

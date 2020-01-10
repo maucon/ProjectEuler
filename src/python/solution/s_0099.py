@@ -1,9 +1,9 @@
+import os
 from math import log
 
 
-# Determine which line number has the greatest numerical value.
 def solve():
-    with open('res/p_0099.txt') as file:
+    with open(os.path.dirname(os.path.abspath(__file__)) + '/res/p_0099.txt') as file:
         lines = [li[:-1].split(',') for li in file.readlines()]
         p = m = 0
         for i, l in enumerate(lines, start=1):

@@ -8,7 +8,6 @@ def solve(limit=100000000):
         if sieve[i // 2]:
             sieve[i * i // 2::i] = bytearray((plimit - i * i - 1) // (2 * i) + 1)
     primes = [2, *compress(range(3, plimit, 2), sieve[1:])]
-
     s = 0
     while len(primes) > 1:
         if primes[-1] * primes[0] >= limit:
