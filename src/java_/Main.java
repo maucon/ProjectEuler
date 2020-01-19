@@ -10,7 +10,7 @@ public class Main {
     public Main() {
 
         // ----------------------------------------------
-        int problemNumber = 698;
+        int problemNumber = 113;
         // ----------------------------------------------
 
         try {
