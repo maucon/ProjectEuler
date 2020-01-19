@@ -2,6 +2,7 @@ package java_;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 
 public class Main {
@@ -9,7 +10,7 @@ public class Main {
     public Main() {
 
         // ----------------------------------------------
-        int problemNumber = 684;
+        int problemNumber = 698;
         // ----------------------------------------------
 
         try {
@@ -18,10 +19,14 @@ public class Main {
 
             System.out.println("\033[4mProblem " + problemNumber + "\n\033[0m");
 
-            BufferedReader br = new BufferedReader(new FileReader(new File("src/problem/description/problem_" + pN + ".txt")));
-            String line;
-            while ((line = br.readLine()) != null) System.out.println(line);
-            br.close();
+            try {
+                BufferedReader br = new BufferedReader(new FileReader(new File("src/problem/description/problem_" + pN + ".txt")));
+                String line;
+                while ((line = br.readLine()) != null) System.out.println(line);
+                br.close();
+            } catch (FileNotFoundException fnfe) {
+                System.out.println("\033[91mNo problem description found!\033[0m");
+            }
 
             System.out.println();
 
