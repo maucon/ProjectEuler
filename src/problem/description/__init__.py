@@ -4,7 +4,7 @@ import requests
 from bs4 import BeautifulSoup
 
 if __name__ == '__main__':
-    p = 680
+    p = 699
     while True:
         try:
             soup = BeautifulSoup(requests.get('https://projecteuler.net/problem=%u' % p).content, 'html.parser')
@@ -23,7 +23,7 @@ if __name__ == '__main__':
             raw_text = str(soup.find('div', {'class': 'problem_content'}).get_text())
             text = raw_text.replace('$', ' ')[1:-1].encode('ascii', 'ignore')
 
-            with open('description/%s.txt' % number, 'wb+') as file:
+            with open('%s.txt' % number, 'wb+') as file:
                 file.write(text)
 
         except AttributeError:
