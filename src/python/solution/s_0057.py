@@ -1,4 +1,3 @@
-# How many fractions contain a numerator with more digits than the denominator?
 def solve(limit=1000):
     f1, f2 = [1, 1], [3, 2]
     c = 0
