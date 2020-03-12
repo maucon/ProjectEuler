@@ -4,7 +4,7 @@ from time import time_ns as time
 if __name__ == '__main__':
 
     # ----------------------------------------------
-    problem_number = 243
+    problem_number = 521
     # ----------------------------------------------
 
     print('\033[4mProblem %s\n\033[0m' % problem_number)

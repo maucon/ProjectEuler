@@ -6,7 +6,7 @@ def solve(limit=10000000000):
             for i in range(p * 2, len(psieve), p):
                 psieve[i] = False
 
-    un = int(0.7188912635 * limit)  #
+    un = int(0.7188912635 * limit)
     return limit - len(primes) - un
 
 
