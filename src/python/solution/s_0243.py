@@ -1,9 +1,14 @@
 from math import gcd
 
 
-def solve(sol=15499 / 94744):
-    print(15499 / 94744)
+def solve():
+    val = 1
+    for i in [2, 3, 5, 7, 11, 13, 17, 19, 23]:
+        val *= i
+    return val * 4
 
+
+def solve_alt(sol=15499 / 94744):
     i = 2
     step = 6
     last_i = 0
