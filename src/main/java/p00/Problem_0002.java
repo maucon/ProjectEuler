@@ -1,3 +1,5 @@
+package p00;
+
 public class Problem_0002 {
 
     public static int solve() {
