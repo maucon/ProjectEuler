@@ -27,12 +27,14 @@ public class Starter {
                 int problemNumber = Integer.parseInt(command[1]);
                 System.out.println("\033[4mProblem " + problemNumber + "\n\033[0m");
 
-                try {
-                    Document doc = Jsoup.connect("https://projecteuler.net/problem=" + problemNumber).get();
-                    System.out.println(doc.select("div.problem_content").first().text().replace(". ", ".\n"));
-                    System.out.println();
-                } catch (IOException e) {
-                    System.err.println("Can't find problem description!");
+                if (problemNumber > 0) {
+                    try {
+                        Document doc = Jsoup.connect("https://projecteuler.net/problem=" + problemNumber).get();
+                        System.out.println(doc.select("div.problem_content").first().text().replace(". ", ".\n"));
+                        System.out.println();
+                    } catch (IOException e) {
+                        System.err.println("Can't find problem description!");
+                    }
                 }
 
                 switch (command[0].toLowerCase()) {
@@ -77,7 +79,7 @@ public class Starter {
                     String solution = line.split(":")[1];
 
                     long end_time = System.nanoTime() - start_time;
-                    printResult(solution, end_time - 163653100);
+                    printResult(solution, end_time - 160653100);
                     return;
                 }
                 System.out.println(line);
