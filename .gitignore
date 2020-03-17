@@ -2,3 +2,9 @@
 out/
 ProjectEuler.iml
 Project_Euler.iml
+
+.gradle
+/build/
+gradle-app.setting
+!gradle-wrapper.jar
+.gradletasknamecache

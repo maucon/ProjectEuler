@@ -1,6 +1,0 @@
-The hyperexponentiation or tetration of a number a by a positive integer b, denoted by ab or ba, is recursively defined by:
-a1 = a,
-a(k+1) = a(ak).
-
-Thus we have e.g. 32 = 33 = 27, hence 33 = 327 = 7625597484987 and 34 is roughly 103.6383346400240996*10^12.
-Find the last 8 digits of 17771855.
