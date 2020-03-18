@@ -8,3 +8,6 @@ Project_Euler.iml
 gradle-app.setting
 !gradle-wrapper.jar
 .gradletasknamecache
+
+/obj/
+/bin/
