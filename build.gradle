@@ -11,6 +11,29 @@ repositories {
     mavenCentral()
 }
 
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java'
+            srcDir 'src/main/python'
+            srcDir 'src/main/csharp'
+        }
+        resources {
+            srcDir 'src/main/resources'
+        }
+    }
+    test {
+        java {
+            srcDir 'src/test/java'
+            srcDir 'src/test/python'
+            srcDir 'src/test/csharp'
+        }
+        resources {
+            srcDir 'src/test/resources'
+        }
+    }
+}
+
 dependencies {
     compile 'org.jsoup:jsoup:1.13.1'
     testCompile group: 'junit', name: 'junit', version: '4.12'
