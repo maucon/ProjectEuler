@@ -1,2 +1,2 @@
 # ProjectEuler
-`java` and `python` implementations of `project euler` problems
+`java`, `python` and `c#` implementations of `project euler` problems
