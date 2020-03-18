@@ -48,10 +48,6 @@ public class Starter {
                     case "j":
                         solveJava(problemNumber);
                         break;
-//                    case "c#":
-//                    case "csharp":
-//                    case "c":
-//                        break;
                     default:
                         System.out.println("Invalid language: " + command[0]);
                         break;
@@ -67,7 +63,7 @@ public class Starter {
 
     private static void solvePython(int problemNumber) {
         try {
-            ProcessBuilder builder = new ProcessBuilder("cmd.exe", "/c", "cd src && cd main && cd python && starter.py " + problemNumber);
+            ProcessBuilder builder = new ProcessBuilder("cmd.exe", "/c", "cd src && cd main && cd python && waiter.py " + problemNumber);
             builder.redirectErrorStream(true);
             Process p = builder.start();
             BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));

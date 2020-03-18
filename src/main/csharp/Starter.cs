@@ -10,28 +10,44 @@ namespace ProjectEuler.main.csharp
         private static void Main(string[] args)
         {
             Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US");
+            Console.WriteLine("\nC# CLI started...");
             while (true)
             {
-                //TODO: CALL FROM JAVA AND GET PROBLEM NUMBER AS ARG
-                Console.WriteLine("\nC# CLI started...");
-                var input = Console.ReadLine();
-                if (input.Equals("0")) return;
-
-                //start Problems:1
-                var package = Convert.ToString(Convert.ToInt32(input) / 100);
-                var path = "ProjectEuler.main.csharp.p" + new string('0', 2 - package.Length) + package + ".Problem" + new string('0', 4 - input.Length) + input;
-                var problem = Type.GetType(path);
-
-                if (problem != null)
+                try
                 {
-                    var problemObject = Activator.CreateInstance(problem);
-                    var toInvoke = problemObject.GetType().GetMethod("Solve", BindingFlags.Static | BindingFlags.Public);
-                    if (toInvoke != null)
+                    var input = Console.ReadLine();
+                    if (input.Equals("exit")) return;
+
+                    //start Problems:
+                    var package = Convert.ToString(Convert.ToInt32(input) / 100);
+                    var path = "ProjectEuler.main.csharp.p" + new string('0', 2 - package.Length) + package + ".Problem" + new string('0', 4 - input.Length) + input;
+                    var problem = Type.GetType(path);
+
+                    if (problem != null)
                     {
-                        Console.WriteLine("SOLUTION:" + toInvoke.Invoke(null, null));
+                        var problemObject = Activator.CreateInstance(problem);
+                        var toInvoke = problemObject.GetType().GetMethod("Solve", BindingFlags.Static | BindingFlags.Public);
+                        if (toInvoke != null)
+                        {
+                            Console.WriteLine("SOLUTION:" + toInvoke.Invoke(null, null));
+                        }
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Problem not solved yet!");
+                        Console.ResetColor();
                     }
                 }
+                catch (Exception e)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Invalid command!");
+                    Console.ResetColor();
+                }
             }
+
+            Console.WriteLine("\nC# CLI closed!");
         }
     }
 }
