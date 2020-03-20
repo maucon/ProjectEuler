@@ -6,81 +6,66 @@ namespace ProjectEuler.main.csharp.p00
 {
     public class Problem0060
     {
+        private static bool[] _primeSieve;
+        private static List<int> _primeList;
+
         public static int Solve()
         {
             var pairs = new Dictionary<int, List<int>>();
-            var primeList = Primes(10000);
+            Primes(10000 * 10000);
 
-            for (var a = 0; a < primeList.Count - 1; a++)
-            for (var b = a + 1; b < primeList.Count; b++)
-                if (IsPrime(Convert.ToInt64(primeList[a] + "" + primeList[b])) && IsPrime(Convert.ToInt64(primeList[b] + "" + primeList[a])))
+            for (var a = 0; a < _primeList.Count - 1; a++)
+            for (var b = a + 1; b < _primeList.Count; b++)
+                if (!_primeSieve[Convert.ToInt64(_primeList[a] + "" + _primeList[b])] && !_primeSieve[Convert.ToInt64(_primeList[b] + "" + _primeList[a])])
                 {
-                    if (pairs.ContainsKey(primeList[a]))
-                    {
-                        var list = pairs[primeList[a]];
-                        list.Add(primeList[b]);
-                        pairs[primeList[a]] = list;
-                    }
+                    if (pairs.ContainsKey(_primeList[a]))
+                        pairs[_primeList[a]].Add(_primeList[b]);
                     else
-                    {
-                        pairs[primeList[a]] = new List<int> {primeList[b]};
-                    }
+                        pairs[_primeList[a]] = new List<int> {_primeList[b]};
                 }
 
-            return (from pair in pairs
-                from pairValue in pair.Value
-                where pairs.ContainsKey(pairValue)
-                from pV in pair.Value.SkipWhile(p => p <= pairValue)
-                from pVv in pairs[pairValue]
-                where pV == pVv
-                from p1 in pairs[pair.Key].SkipWhile(p => p <= pV)
-                from p2 in pairs[pairValue].SkipWhile(p => p <= pV)
-                where pairs.ContainsKey(pV)
-                from p3 in pairs[pV].SkipWhile(p => p <= pV)
-                where p1 == p2 && p2 == p3
-                from pls1 in pairs[pair.Key].SkipWhile(p => p <= p1)
-                from pls2 in pairs[pairValue].SkipWhile(p => p <= p1)
-                from pls3 in pairs[pV].SkipWhile(p => p <= p1)
-                where pairs.ContainsKey(p1)
-                from pls4 in pairs[p1].SkipWhile(p => p <= p1)
-                where pls1 == pls2 && pls2 == pls3 && pls3 == pls4
-                select pair.Key + pairValue + pV + p1 + pls1).Concat(new[] {int.MaxValue}).Min();
+            var result = int.MaxValue;
+            foreach (var pair in pairs)
+            foreach (var pairValue in pair.Value)
+                if (pairs.ContainsKey(pairValue))
+                    foreach (var pV in pair.Value.SkipWhile(p => p <= pairValue))
+                    foreach (var pVv in pairs[pairValue])
+                        if (pV == pVv)
+                            //FOUND PAIR OF 3 -> Console.WriteLine(pair.Key + ":" + pairValue + ":" + pV);
+                            foreach (var p1 in pairs[pair.Key].SkipWhile(p => p <= pV))
+                            foreach (var p2 in pairs[pairValue].SkipWhile(p => p <= pV))
+                                if (pairs.ContainsKey(pV))
+                                    foreach (var p3 in pairs[pV].SkipWhile(p => p <= pV))
+                                        if (p1 == p2 && p2 == p3)
+                                            //FOUND PAIR OF 4 -> Console.WriteLine(pair.Key + ":" + pairValue + ":" + pV + ":" + p1);
+                                            foreach (var pls1 in pairs[pair.Key].SkipWhile(p => p <= p1))
+                                            foreach (var pls2 in pairs[pairValue].SkipWhile(p => p <= p1))
+                                            foreach (var pls3 in pairs[pV].SkipWhile(p => p <= p1))
+                                                if (pairs.ContainsKey(p1))
+                                                    foreach (var pls4 in pairs[p1].SkipWhile(p => p <= p1))
+                                                        if (pls1 == pls2 && pls2 == pls3 && pls3 == pls4)
+                                                            //FOUND PAIR OF 5
+                                                            if (pair.Key + pairValue + pV + p1 + pls1 < result)
+                                                                result = pair.Key + pairValue + pV + p1 + pls1;
+
+            return result;
         }
 
-        private static List<int> Primes(int upper)
+        private static void Primes(int upper)
         {
-            var pS = new bool[upper];
-            var pL = new List<int>();
+            _primeSieve = new bool[upper];
+            _primeList = new List<int>();
 
-            var sqrt = (int) Math.Sqrt(pS.Length);
+            var sqrt = (int) Math.Sqrt(_primeSieve.Length);
             for (var i = 3;
                 i < sqrt;
                 i += 2)
-                if (!pS[i])
+                if (!_primeSieve[i])
                 {
-                    pL.Add(i);
+                    _primeList.Add(i);
 
-                    for (var j = i * i; j < pS.Length; j += i * 2) pS[j] = true;
+                    for (var j = i * i; j < _primeSieve.Length; j += i * 2) _primeSieve[j] = true;
                 }
-
-            for (var i = ((sqrt + 1) & 1) == 0 ? sqrt + 2 : sqrt + 1;
-                i < pS.Length;
-                i += 2)
-                if (!pS[i])
-                    pL.Add(i);
-            return pL;
-        }
-
-        private static bool IsPrime(long n)
-        {
-            var nsqrt = Math.Sqrt(n);
-            for (var i = 3;
-                i < nsqrt;
-                i += 2)
-                if (n % i == 0)
-                    return false;
-
-            return true;
         }
     }
 }
