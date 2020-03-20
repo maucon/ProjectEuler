@@ -34,9 +34,9 @@ namespace ProjectEuler.main.csharp
                         var toInvoke = problemObject.GetType().GetMethod("Solve", BindingFlags.Static | BindingFlags.Public);
                         if (toInvoke != null)
                         {
-                            var startTime = Stopwatch.GetTimestamp();
+                            var startTime = GetNanoseconds();
                             var result = toInvoke.Invoke(null, null);
-                            var totalTime = Stopwatch.GetTimestamp() - startTime;
+                            var totalTime = GetNanoseconds() - startTime;
 
                             var time = totalTime + "";
                             while (time.Length < 11) time = "0" + time;
@@ -57,13 +57,22 @@ namespace ProjectEuler.main.csharp
                         Console.ResetColor();
                     }
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
+                    Console.WriteLine(e);
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Invalid command!");
+                    Console.WriteLine("Problem not solved yet!");
                     Console.ResetColor();
                 }
             }
+        }
+        
+        private static long GetNanoseconds()
+        {
+            var timestamp = Stopwatch.GetTimestamp();
+            var nanoseconds = 1_000_000_000.0 * timestamp / Stopwatch.Frequency;
+
+            return (long)nanoseconds;
         }
     }
 }
