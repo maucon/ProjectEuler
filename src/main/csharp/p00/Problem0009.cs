@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ProjectEuler.main.csharp.p00
+﻿namespace ProjectEuler.main.csharp.p00
 {
     public class Problem0009
     {
@@ -12,10 +10,7 @@ namespace ProjectEuler.main.csharp.p00
                 for (var b = 1000 - a - 1; b > limit; b--)
                 {
                     var c = 1000 - a - b;
-                    if (b * b + c * c == a * a)
-                    {
-                        return a * b * c;
-                    }
+                    if (b * b + c * c == a * a) return a * b * c;
                 }
             }
 

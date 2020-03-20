@@ -7,13 +7,11 @@
             var num = 600851475143;
 
             for (var i = 2; i < num - 1; i++)
-            {
                 if (num % i == 0)
                 {
                     num /= i;
                     i--;
                 }
-            }
 
             return num;
         }

@@ -13,7 +13,6 @@ namespace ProjectEuler.main.csharp
             Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US");
             Console.WriteLine("\nC# CLI started...\n");
             while (true)
-            {
                 try
                 {
                     var input = Console.ReadLine();
@@ -40,10 +39,7 @@ namespace ProjectEuler.main.csharp
 
                             var time = totalTime + "";
                             while (time.Length < 11) time = "0" + time;
-                            for (var i = time.Length - 3; i > 0; i -= 3)
-                            {
-                                time = time.Substring(0, i) + ":" + time.Substring(i);
-                            }
+                            for (var i = time.Length - 3; i > 0; i -= 3) time = time.Substring(0, i) + ":" + time.Substring(i);
 
                             Console.WriteLine("Solution: " + result);
                             Console.WriteLine("Time:     " + time);
@@ -64,15 +60,14 @@ namespace ProjectEuler.main.csharp
                     Console.WriteLine("Problem not solved yet!");
                     Console.ResetColor();
                 }
-            }
         }
-        
+
         private static long GetNanoseconds()
         {
             var timestamp = Stopwatch.GetTimestamp();
             var nanoseconds = 1_000_000_000.0 * timestamp / Stopwatch.Frequency;
 
-            return (long)nanoseconds;
+            return (long) nanoseconds;
         }
     }
 }

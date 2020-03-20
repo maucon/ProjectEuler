@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 
 namespace ProjectEuler.main.csharp.p00
 {
@@ -9,17 +8,12 @@ namespace ProjectEuler.main.csharp.p00
         {
             var res = 0;
             for (var i = 999; i > 99; i--)
+            for (var j = i; j > 99; j--)
             {
-                for (var j = i; j > 99; j--)
-                {
-                    var num = i * j;
-                    if (num < res) break;
-                    var s = num + "";
-                    if (s.Equals(Reverse(s)))
-                    {
-                        res = num;
-                    }
-                }
+                var num = i * j;
+                if (num < res) break;
+                var s = num + "";
+                if (s.Equals(Reverse(s))) res = num;
             }
 
             return res;
