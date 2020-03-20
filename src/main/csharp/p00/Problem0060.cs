@@ -27,31 +27,24 @@ namespace ProjectEuler.main.csharp.p00
                     }
                 }
 
-            var result = int.MaxValue;
-            foreach (var pair in pairs)
-            foreach (var pairValue in pair.Value)
-                if (pairs.ContainsKey(pairValue))
-                    foreach (var pV in pair.Value.SkipWhile(p => p <= pairValue))
-                    foreach (var pVv in pairs[pairValue])
-                        if (pV == pVv)
-                            //FOUND PAIR OF 3 -> Console.WriteLine(pair.Key + ":" + pairValue + ":" + pV);
-                            foreach (var p1 in pairs[pair.Key].SkipWhile(p => p <= pV))
-                            foreach (var p2 in pairs[pairValue].SkipWhile(p => p <= pV))
-                                if (pairs.ContainsKey(pV))
-                                    foreach (var p3 in pairs[pV].SkipWhile(p => p <= pV))
-                                        if (p1 == p2 && p2 == p3)
-                                            //FOUND PAIR OF 4 -> Console.WriteLine(pair.Key + ":" + pairValue + ":" + pV + ":" + p1);
-                                            foreach (var pls1 in pairs[pair.Key].SkipWhile(p => p <= p1))
-                                            foreach (var pls2 in pairs[pairValue].SkipWhile(p => p <= p1))
-                                            foreach (var pls3 in pairs[pV].SkipWhile(p => p <= p1))
-                                                if (pairs.ContainsKey(p1))
-                                                    foreach (var pls4 in pairs[p1].SkipWhile(p => p <= p1))
-                                                        if (pls1 == pls2 && pls2 == pls3 && pls3 == pls4)
-                                                            //FOUND PAIR OF 5
-                                                            if (pair.Key + pairValue + pV + p1 + pls1 < result)
-                                                                result = pair.Key + pairValue + pV + p1 + pls1;
-
-            return result;
+            return (from pair in pairs
+                from pairValue in pair.Value
+                where pairs.ContainsKey(pairValue)
+                from pV in pair.Value.SkipWhile(p => p <= pairValue)
+                from pVv in pairs[pairValue]
+                where pV == pVv
+                from p1 in pairs[pair.Key].SkipWhile(p => p <= pV)
+                from p2 in pairs[pairValue].SkipWhile(p => p <= pV)
+                where pairs.ContainsKey(pV)
+                from p3 in pairs[pV].SkipWhile(p => p <= pV)
+                where p1 == p2 && p2 == p3
+                from pls1 in pairs[pair.Key].SkipWhile(p => p <= p1)
+                from pls2 in pairs[pairValue].SkipWhile(p => p <= p1)
+                from pls3 in pairs[pV].SkipWhile(p => p <= p1)
+                where pairs.ContainsKey(p1)
+                from pls4 in pairs[p1].SkipWhile(p => p <= p1)
+                where pls1 == pls2 && pls2 == pls3 && pls3 == pls4
+                select pair.Key + pairValue + pV + p1 + pls1).Concat(new[] {int.MaxValue}).Min();
         }
 
         private static List<int> Primes(int upper)
