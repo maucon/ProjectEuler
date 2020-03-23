@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Globalization;
-using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Threading;
 using HtmlAgilityPack;
-
 
 namespace ProjectEuler.main.csharp
 {
@@ -18,9 +16,16 @@ namespace ProjectEuler.main.csharp
             Console.WriteLine("\nC# CLI started...");
             while (true)
                 try
-                {    
+                {
                     Console.Write("=> ");
                     var input = Console.ReadLine();
+
+                    if (input == null)
+                    {
+                        ErrPrint("Invalid command!");
+                        continue;
+                    }
+
                     if (input.Equals("exit"))
                     {
                         Console.WriteLine("\nC# CLI closed!");

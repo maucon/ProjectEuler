@@ -4,13 +4,13 @@
     {
         public static int Solve()
         {
-            for (var a = 998; a > 0; a--)
+            for (var x = 998; x > 0; x--)
             {
-                var limit = (1000 - a) / 2;
-                for (var b = 1000 - a - 1; b > limit; b--)
+                var limit = (1000 - x) / 2;
+                for (var y = 1000 - x - 1; y > limit; y--)
                 {
-                    var c = 1000 - a - b;
-                    if (b * b + c * c == a * a) return a * b * c;
+                    var z = 1000 - x - y;
+                    if (y * y + z * z == x * x) return x * y * z;
                 }
             }
 
