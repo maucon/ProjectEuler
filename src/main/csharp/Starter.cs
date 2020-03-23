@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Globalization;
+using System.Linq;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using System.Threading;
+using HtmlAgilityPack;
+
 
 namespace ProjectEuler.main.csharp
 {
@@ -11,15 +15,28 @@ namespace ProjectEuler.main.csharp
         private static void Main(string[] args)
         {
             Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US");
-            Console.WriteLine("\nC# CLI started...\n");
+            Console.WriteLine("\nC# CLI started...");
             while (true)
                 try
-                {
+                {    
+                    Console.Write("=> ");
                     var input = Console.ReadLine();
                     if (input.Equals("exit"))
                     {
                         Console.WriteLine("\nC# CLI closed!");
                         return;
+                    }
+
+                    try
+                    {
+                        Console.WriteLine("--Problem " + input + "--\n");
+                        Console.WriteLine(Regex.Replace(new HtmlWeb().Load("https://projecteuler.net/problem=" + input).DocumentNode.SelectNodes("//div[@class='problem_content']")[0]
+                            .InnerText.Replace(". ", ".\n"), @"^\s+$[\r\n]*", string.Empty, RegexOptions.Multiline));
+                    }
+                    catch (Exception)
+                    {
+                        ErrPrint("Can't find problem description!");
+                        continue;
                     }
 
                     //start Problems:
@@ -48,18 +65,21 @@ namespace ProjectEuler.main.csharp
                     }
                     else
                     {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("Problem not solved yet!");
-                        Console.ResetColor();
+                        ErrPrint("Problem not solved yet!");
                     }
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e);
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Problem not solved yet!");
-                    Console.ResetColor();
+                    Console.WriteLine(e + "\n");
+                    ErrPrint("Problem not solved yet!");
                 }
+        }
+
+        private static void ErrPrint(string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(message);
+            Console.ResetColor();
         }
 
         private static long GetNanoseconds()
