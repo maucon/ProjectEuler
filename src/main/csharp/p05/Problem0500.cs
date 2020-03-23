@@ -15,8 +15,7 @@ namespace ProjectEuler.main.csharp.p05
             ulong solution = 1;
             for (var i = 0; i < 500500; i++)
             {
-                solution *= Convert.ToUInt64(allPrimeSqrt[i]);
-                solution %= 500500507;
+                solution = solution * Convert.ToUInt64(allPrimeSqrt[i]) % 500500507;
             }
 
             return solution;
