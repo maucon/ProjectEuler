@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class Starter {
 
     private Starter() {
-        //TODO: dynamic timing testing with p 0 and j 0
+        //TODO: dynamic timing testing with p 0 and j 0 and k 0
 
         String cmd;
         Scanner scanner = new Scanner(System.in);
@@ -32,7 +32,7 @@ public class Starter {
                         Document doc = Jsoup.connect("https://projecteuler.net/problem=" + problemNumber).get();
                         System.out.println(doc.select("div.problem_content").first().text().replace(". ", ".\n"));
                         System.out.println();
-                    } catch (IOException e) {
+                    } catch (Exception e) {
                         System.err.println("Can't find problem description!");
                     }
                 }
@@ -47,6 +47,11 @@ public class Starter {
                     case "java":
                     case "j":
                         solveJava(problemNumber);
+                        break;
+                    case "kt":
+                    case "kotlin":
+                    case "k":
+                        solveKotlin(problemNumber);
                         break;
                     default:
                         System.out.println("Invalid language: " + command[0]);
@@ -63,7 +68,7 @@ public class Starter {
 
     private static void solvePython(int problemNumber) {
         try {
-            ProcessBuilder builder = new ProcessBuilder("cmd.exe", "/c", "cd src && cd main && cd python && waiter.py " + problemNumber);
+            ProcessBuilder builder = new ProcessBuilder("cmd.exe", "/c", "cd src && cd p00.main && cd python && waiter.py " + problemNumber);
             builder.redirectErrorStream(true);
             Process p = builder.start();
             BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
@@ -107,6 +112,18 @@ public class Starter {
         }
     }
 
+    private static void solveKotlin(int problemNumber) {
+        long start_time = System.nanoTime();
+        Object solution = WaiterKt.start(problemNumber);
+        long end_time = System.nanoTime() - start_time;
+
+        if (solution.equals("ERROR")) {
+            System.err.println("Problem not solved yet!");
+        } else {
+            printResult(solution, end_time - 31000);
+        }
+    }
+
     private static void printResult(Object solution, long time) {
         StringBuilder t = new StringBuilder(time + "");
         while (t.length() < 11) t.insert(0, 0);
@@ -118,8 +135,8 @@ public class Starter {
         System.out.println("         [ s| ms| μs| ns]");
     }
 
-
     public static void main(String[] args) {
         new Starter();
     }
+
 }
