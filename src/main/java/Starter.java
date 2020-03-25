@@ -68,7 +68,7 @@ public class Starter {
 
     private static void solvePython(int problemNumber) {
         try {
-            ProcessBuilder builder = new ProcessBuilder("cmd.exe", "/c", "cd src && cd p00.main && cd python && waiter.py " + problemNumber);
+            ProcessBuilder builder = new ProcessBuilder("cmd.exe", "/c", "cd src && cd main && cd python && waiter.py " + problemNumber);
             builder.redirectErrorStream(true);
             Process p = builder.start();
             BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));

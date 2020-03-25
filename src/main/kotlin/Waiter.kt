@@ -9,6 +9,7 @@ fun start(problemNumber: Int): Any {
         val c = Class.forName("$pack.Problem$pN").getDeclaredConstructor().newInstance()
         c.javaClass.methods[0].invoke(c)
     } catch (e: Exception) {
+        // e.printStackTrace()
         "ERROR"
     }
 }
