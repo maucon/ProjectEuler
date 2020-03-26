@@ -8,8 +8,10 @@ fun start(problemNumber: Int): Any {
     return try {
         val c = Class.forName("$pack.Problem$pN").getDeclaredConstructor().newInstance()
         c.javaClass.methods[0].invoke(c)
+    } catch (e: ClassNotFoundException) {
+        "ERROR"
     } catch (e: Exception) {
-        // e.printStackTrace()
+        e.cause!!.printStackTrace()
         "ERROR"
     }
 }
