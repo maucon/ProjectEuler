@@ -17,6 +17,6 @@ public class Problem_0125 {
     }
 
     private static boolean isPalindrome(String s) {
-        return (s.length() <= 1) || (s.charAt(0) == s.charAt(s.length() - 1) && isPalindrome(s.substring(1, s.length() - 1)));
+        return s.length() <= 1 || s.charAt(0) == s.charAt(s.length() - 1) && isPalindrome(s.substring(1, s.length() - 1));
     }
 }
