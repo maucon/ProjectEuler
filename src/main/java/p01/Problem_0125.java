@@ -9,7 +9,7 @@ public class Problem_0125 {
     public static long solve() {
         HashSet<Integer> conPalindromes = new HashSet<>();
 
-        for (int startSquare = 1, startAdd = 1; startSquare < limit / 2; startSquare += (startAdd += 2))
+        for (int startSquare = 1, startAdd = 1; startSquare < limit / 2; startSquare += startAdd += 2)
             for (int add = startAdd + 2, nextSquare = startSquare + add, sum = startSquare + nextSquare; sum < limit; sum += nextSquare += add += 2)
                 if (isPalindrome(String.valueOf(sum))) conPalindromes.add(sum);
 
